@@ -1,16 +1,11 @@
 import { createGlobalStyle } from "styled-components";
-import Header from "./components/Header";
-import Main from "./components/Main";
-import Footer from "./components/Footer";
-
+import { AppRoutes } from "./pages/routes";
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <Header />
-      <Main />
-      <Footer />
+      <AppRoutes />
     </>
   );
 }
@@ -32,6 +27,25 @@ body {
   font-family: "Sora", sans-serif;
   background-color: #009C4A;
 }
+
+.CtaButton {
+    background: #fff;
+    color: #009c4a;
+    border: none;
+    transition: transform 0.2s;
+  }
+
+.SecondaryButton {
+    border: 0.1rem solid #fff;
+    color: #fff;
+    background: transparent;
+    transition: 0.2s;
+
+    &:hover {
+      background: #fff;
+      color: #009c4a;
+    }
+  }
 `;
 
 export default App;
