@@ -92,7 +92,7 @@ Gostaría de dar os créditos aos seguintes recursos externos utilizados neste p
 
 ## Licença 📜
 
-O MoneyTrack é distribuído sob os termos da **Licença MIT**, Consulte o arquivo [LICENSE](link_para_arquivo_license) para obter mais informações.
+O MoneyTrack é distribuído sob os termos da **Licença MIT**, Consulte o arquivo [LICENSE](https://github.com/Fransuelton/money-track/blob/main/LICENSE) para obter mais informações.
 
 ## Agradecimentos ❤️
 
