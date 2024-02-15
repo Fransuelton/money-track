@@ -1,8 +1,10 @@
-import { Header, Footer } from "../components/layout";
-import styled from "styled-components";
 import piggyBank from "/piggy.svg";
-import { Button } from "../components";
+
 import { Link } from "react-router-dom";
+import { styled } from "styled-components";
+
+import { Header, Footer } from "../components/layout";
+import { Button, PiggyBankCard } from "../components";
 
 const Home = () => {
   return (
@@ -15,19 +17,25 @@ const Home = () => {
             MoneyTrack: Transformando economia em diversão. Controle suas
             finanças enquanto se diverte e atinja seus objetivos mais rápido.
           </p>
-          <div>
-            <Link to={`/dashboard`}>
-              <Button content="Criar cofrinho virtual" className="CtaButton" />
-            </Link>
+          <div className="button-container">
+            {PiggyBankCard() ? (
+              <Link to={`/dashboard`}>
+                <Button content="Ver meus cofrinhos" className="CtaButton" />
+              </Link>
+            ) : (
+              <Link to={`/dashboard`}>
+                <Button
+                  content="Criar cofrinho virtual"
+                  className="CtaButton"
+                />
+              </Link>
+            )}
             <Link to={`/saiba-mais`}>
               <Button content="Saiba mais" className="SecondaryButton" />
             </Link>
           </div>
         </StyledDivContainer>
-        <StyledImg
-          src={piggyBank}
-          alt="Piggy Bank Coin - Piggy Bank Vector Png@pngkit.com"
-        />
+        <StyledImg src={piggyBank} alt="Coin Clipart Banking - Piggy Bank" />
       </StyledSection>
       <Footer />
     </>
@@ -38,11 +46,9 @@ const StyledSection = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5rem;
-  margin: 10rem 0;
   padding: 2rem;
-   color: #fff;
-  
+  color: #fff;
+
   h1 {
     font-size: 4.5rem;
     text-align: left;
@@ -52,20 +58,36 @@ const StyledSection = styled.section`
   p {
     font-weight: 400;
     font-size: 2rem;
-    padding-bottom: 4.8rem;
+    padding-bottom: 3.2rem;
     padding-right: 10rem;
   }
 
-  div {
+  .button-container {
     display: flex;
     gap: 2.4rem;
   }
 
+  .CtaButton {
+    background: #fff;
+    color: #009c4a;
+    border: none;
+    transition: transform 0.2s;
+  }
+
+  .SecondaryButton {
+    border: 0.1rem solid #fff;
+    color: #fff;
+    background: transparent;
+    transition: 0.2s;
+
+    &:hover {
+      background: #fff;
+      color: #009c4a;
+    }
+  }
+
   @media (max-width: 480px) {
     flex-direction: column-reverse;
-    margin: 0;
-    gap: 0;
-    padding: 0 2rem;
 
     h1 {
       font-size: 3rem;
@@ -79,10 +101,82 @@ const StyledSection = styled.section`
       padding: 0;
     }
 
-    div {
-      gap: 2.4rem;
+    .button-container {
       justify-content: center;
       align-items: center;
+    }
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    flex-direction: column-reverse;
+
+    h1 {
+      font-size: 3rem;
+      text-align: center;
+      padding: 0;
+    }
+
+    p {
+      font-size: 1.5rem;
+      text-align: center;
+      padding: 0;
+    }
+
+    .button-container {
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    flex-direction: column-reverse;
+
+    h1 {
+      font-size: 3rem;
+      text-align: center;
+      padding: 0;
+    }
+
+    p {
+      text-align: center;
+      padding: 0;
+    }
+
+    .button-container {
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    flex-direction: column-reverse;
+
+    h1 {
+      font-size: 3rem;
+      text-align: center;
+      padding: 0;
+    }
+
+    p {
+      text-align: center;
+      padding: 0;
+    }
+
+    .button-container {
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @media (min-width: 1200px) and (max-width: 1919px) {
+    flex-direction: row;
+  }
+
+  @media (min-width: 1920px) {
+    flex-direction: row;
+
+    p {
+      padding: 0;
     }
   }
 `;
@@ -90,11 +184,40 @@ const StyledSection = styled.section`
 const StyledDivContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 80rem;
+  gap: 1rem;
 
   @media (max-width: 480px) {
     width: 100%;
     margin-bottom: 3rem;
+    gap: 2.4rem;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    width: 100%;
+    margin-bottom: 3rem;
+    gap: 2.4rem;
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    width: 100%;
+    margin-bottom: 3rem;
+    gap: 3rem;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    width: 80rem;
+    margin-bottom: 3rem;
+    gap: 3rem;
+  }
+
+  @media (min-width: 1200px) and (max-width: 1919px) {
+    max-width: 80rem;
+  }
+
+  @media (min-width: 1920px) {
+    width: 80rem;
+    margin-bottom: 3rem;
+    gap: 3rem;
   }
 `;
 
@@ -105,6 +228,21 @@ const StyledImg = styled.img`
   @media (max-width: 480px) {
     width: 30rem;
     height: 30rem;
+  }
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    width: 30rem;
+    height: 30rem;
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    width: 30rem;
+    height: 30rem;
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+    width: 40rem;
+    height: 40rem;
   }
 `;
 
