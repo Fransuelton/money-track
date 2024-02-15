@@ -10,13 +10,13 @@ const Dashboard = () => {
   const [open, setOpen] = useState<boolean>(false);
 
   const key = "piggyBank";
-  const piggyBanksCreated = readLocalStorage({ key: key, information: ""});
+  const piggyBanksCreated = readLocalStorage({ key });
 
   return (
     <>
       <Header />
       <StyledSection>
-        {piggyBanksCreated && (
+        {piggyBanksCreated ? (
           <>
             <h2>Seu cofrinho:</h2>
             <h2>{piggyBanksCreated.piggyBankName}</h2>
@@ -28,8 +28,7 @@ const Dashboard = () => {
               onClick={() => deletePiggyBank()}
             />
           </>
-        )}
-        {!piggyBanksCreated && (
+        ) : (
           <>
             <img src={empty} alt="" className="piggy" id="piggy" />
             <h2>
