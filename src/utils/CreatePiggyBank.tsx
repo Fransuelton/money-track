@@ -1,22 +1,24 @@
-import { formatValueToBrl } from "./FormatValueToBrl";
+import { readLocalStorage, saveLocalStorage } from "./LocalStorage";
+const key = "piggyBank";
+const information = null ;
+let piggyBanksCreated = readLocalStorage({key: key, information: information}) ?? {}
 
-export function criarCofrinho(setOpen?: (isOpen: boolean) => void, isOpen?: boolean) {
+
+export function createPiggyBank(setOpen?: (isOpen: boolean) => void, isOpen?: boolean) {
+    
+    
+
     if (setOpen && isOpen) {
-        const nomeDoCofrinho = (document.getElementById("name") as HTMLInputElement).value;
-        const valorIncial = Number((document.getElementById("initialdep") as HTMLInputElement).value);
-        const motivo = (document.getElementById("motive") as HTMLInputElement).value;
-        const text = document.querySelector(".text")
+        const piggyBankName = (document.getElementById("name") as HTMLInputElement).value;
+        const initialDeposit = Number((document.getElementById("initialdep") as HTMLInputElement).value);
+        const motive = (document.getElementById("motive") as HTMLInputElement).value;
 
-       
-            if (text) {
-                text.innerHTML = `<p>Cofrinho criado com sucesso! 🐷✨</p>
-                              <p>Nome do Cofrinho: ${nomeDoCofrinho}</p>
-                              <p>Valor Inicial: ${formatValueToBrl(valorIncial)}</p>
-                              <p>Motivo: ${motivo}</p>`
-            }
-        
-        
+        saveLocalStorage({key: key, information: {piggyBankName: piggyBankName, initialDeposit: initialDeposit, motive: motive}})
+
+        piggyBanksCreated = readLocalStorage({key: key}) ?? {}
 
         setOpen(!isOpen)
+    
+
     }
 }
