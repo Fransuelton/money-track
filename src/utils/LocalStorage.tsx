@@ -1,6 +1,6 @@
 interface ILocalStorage {
   key: string;
-  information: string | object | number | boolean | null;
+  information?: string | object | number | boolean | null;
 }
 
 export function saveLocalStorage({ key, information }: ILocalStorage) {
