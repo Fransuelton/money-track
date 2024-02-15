@@ -1,6 +1,7 @@
 import { readLocalStorage, saveLocalStorage } from "./LocalStorage";
 const key = "piggyBank";
 const information = null ;
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 let piggyBanksCreated = readLocalStorage({key: key, information: information}) ?? {}
 
 
@@ -15,7 +16,7 @@ export function createPiggyBank(setOpen?: (isOpen: boolean) => void, isOpen?: bo
 
         saveLocalStorage({key: key, information: {piggyBankName: piggyBankName, initialDeposit: initialDeposit, motive: motive}})
 
-        piggyBanksCreated = readLocalStorage({key: key}) ?? {}
+        piggyBanksCreated = readLocalStorage({key: key, information}) ?? {}
 
         setOpen(!isOpen)
     

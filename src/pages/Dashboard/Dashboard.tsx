@@ -10,7 +10,7 @@ const Dashboard = () => {
   const [open, setOpen] = useState<boolean>(false);
 
   const key = "piggyBank";
-  const piggyBanksCreated = readLocalStorage({ key: key });
+  const piggyBanksCreated = readLocalStorage({ key: key, information: ""});
 
   return (
     <>
