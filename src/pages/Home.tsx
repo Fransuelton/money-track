@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
 import { Header, Footer } from "../components/layout";
-import { Button, PiggyBankCard } from "../components";
+import { Button } from "../components";
 
 const Home = () => {
   return (
@@ -18,18 +18,10 @@ const Home = () => {
             finanças enquanto se diverte e atinja seus objetivos mais rápido.
           </p>
           <div className="button-container">
-            {PiggyBankCard() ? (
-              <Link to={`/dashboard`}>
-                <Button content="Ver meus cofrinhos" className="CtaButton" />
-              </Link>
-            ) : (
-              <Link to={`/dashboard`}>
-                <Button
-                  content="Criar cofrinho virtual"
-                  className="CtaButton"
-                />
-              </Link>
-            )}
+            <Link to={`/dashboard`}>
+              <Button content="Criar cofrinho virtual" className="CtaButton" />
+            </Link>
+
             <Link to={`/saiba-mais`}>
               <Button content="Saiba mais" className="SecondaryButton" />
             </Link>
