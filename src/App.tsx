@@ -1,9 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 import { AppRoutes } from "./pages/routes";
+import { ToastContainer} from 'react-toastify';
 
 function App() {
   return (
     <>
+    <ToastContainer />
       <GlobalStyle />
       <AppRoutes />
     </>
@@ -17,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Sora", sans-serif;
 }
 
 html {
@@ -24,27 +27,19 @@ html {
 }
 
 body {
-  font-family: "Sora", sans-serif;
   background-color: #009C4A;
 }
 
-.CtaButton {
-    background: #fff;
-    color: #009c4a;
-    border: none;
-    transition: transform 0.2s;
-  }
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-.SecondaryButton {
-    border: 0.1rem solid #fff;
+  .deleteBtn {
+    background-color: #ce2519;
     color: #fff;
-    background: transparent;
-    transition: 0.2s;
-
-    &:hover {
-      background: #fff;
-      color: #009c4a;
-    }
   }
 `;
 
