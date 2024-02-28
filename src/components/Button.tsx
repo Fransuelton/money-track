@@ -8,7 +8,7 @@ interface IButton {
   disabled?: boolean;
 }
 
-const Button = ({ content, className, onClick }: IButton) => {
+const Button = ({ content = "Button", className, onClick }: IButton) => {
   return <StyledButton className={className} onClick={onClick}>{content}</StyledButton>;
 };
 
@@ -23,7 +23,7 @@ const StyledButton = styled.button`
   border: none;
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 
   @media (max-width: 480px){
