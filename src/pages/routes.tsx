@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { BrowserRouter, Route, Routes,useLocation } from "react-router-dom";
 import { Home } from "./Home";
-import { About } from "./About/About";
-import { Dashboard } from "./Dashboard/Dashboard";
+import { About } from "./About";
+import { Dashboard } from "./Dashboard";
 
 const AppRoutes = () => (
   <BrowserRouter>
