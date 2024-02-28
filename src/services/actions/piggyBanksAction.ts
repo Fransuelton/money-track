@@ -34,7 +34,7 @@ export async function getPiggyBankAction() {
   return piggyBankList;
 }
 
-export async function deletePiggyBankAction( id: string) {
+export async function deletePiggyBankAction(id: string) {
   const response = await deletePiggyBankAcess(id);
   return response;
 }
