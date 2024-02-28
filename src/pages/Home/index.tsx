@@ -1,10 +1,10 @@
-import piggyBank from "/piggy.svg";
+import piggyBankCoin from "/piggy.svg";
 
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
-import { Header, Footer } from "../components/layout";
-import { Button } from "../components";
+import { Header, Footer } from "../../components/layout";
+import { Button } from "../../components";
 
 const Home = () => {
   return (
@@ -27,7 +27,10 @@ const Home = () => {
             </Link>
           </div>
         </StyledDivContainer>
-        <StyledImg src={piggyBank} alt="Coin Clipart Banking - Piggy Bank" />
+        <StyledImg
+          src={piggyBankCoin}
+          alt="Coin Clipart Banking - Piggy Bank"
+        />
       </StyledSection>
       <Footer />
     </>
