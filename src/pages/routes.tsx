@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { BrowserRouter, Route, Routes,useLocation } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Home } from "./Home";
 import { About } from "./About";
 import { Dashboard } from "./Dashboard";
@@ -15,15 +15,15 @@ const AppRoutes = () => (
 );
 
 function AboutPage() {
-  useDocumentTitle('Sobre');
+  useDocumentTitle("Sobre");
   return <About />;
 }
 function HomePage() {
-  useDocumentTitle('Home');
+  useDocumentTitle("Home");
   return <Home />;
 }
 function DashboardPage() {
-  useDocumentTitle('Dashboard');
+  useDocumentTitle("Dashboard");
   return <Dashboard />;
 }
 
