@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import { Button } from "../../components/index";
-import { createPiggyBank } from "../../utils/CreatePiggyBank";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import background from "/piggybank-background.png"
+import background from "/piggybank-background.png";
+import { addPiggyBankAction } from "../../services/actions/piggyBanksAction";
+import { v4 as uuidv4 } from "uuid";
+import { useState } from "react";
 
 interface IModal {
   isOpen: boolean;
@@ -11,6 +13,11 @@ interface IModal {
 }
 
 const Modal = ({ isOpen, setOpen }: IModal) => {
+  const [name, setName] = useState("");
+  const [inialDeposit, setInitialDeposit] = useState(0);
+  const [targetAmount, setTargetAmount] = useState(0);
+  const [motive, setMotive] = useState("");
+
   if (isOpen) {
     const notifySucess = () => {
       toast.success("Cofrinho criado com sucesso!", {
@@ -27,28 +34,29 @@ const Modal = ({ isOpen, setOpen }: IModal) => {
         },
       });
     };
-
     return (
       <StyledModal>
         <div className="modal">
           <img src={background} alt="" />
-          <label htmlFor="name">Nome do Cofrinho</label>
+          <label htmlFor="piggybankname">Nome do Cofrinho</label>
           <input
             type="text"
-            name="name"
-            id="name"
+            name="piggybankname"
+            id="piggybankname"
             placeholder="Reserva de Emergência"
+            onChange={(e) => setName(e.target.value)}
           />
 
           <div className="value-container">
             <div>
-              <label htmlFor="initialdep">Valor Inicial</label>
+              <label htmlFor="initialdeposit">Valor Inicial</label>
               <input
                 type="number"
-                name="initialdep"
-                id="initialdep"
+                name="initialdeposit"
+                id="initialdeposit"
                 placeholder="1,00"
                 className="initialdep-input"
+                onChange={(e) => setInitialDeposit(e.target.valueAsNumber)}
               />
               <select
                 name="currency"
@@ -61,8 +69,14 @@ const Modal = ({ isOpen, setOpen }: IModal) => {
             </div>
 
             <div>
-              <label htmlFor="initialdep">Meta</label>
-              <input type="number" name="meta" id="meta" placeholder="100,00" />
+              <label htmlFor="target">Meta</label>
+              <input
+                type="number"
+                name="target"
+                id="target"
+                placeholder="100,00"
+                onChange={(e) => setTargetAmount(e.target.valueAsNumber)}
+              />
             </div>
           </div>
 
@@ -74,6 +88,7 @@ const Modal = ({ isOpen, setOpen }: IModal) => {
             rows={10}
             placeholder="Qual é o seu grande objetivo? Digite aqui o motivo pelo qual está criando este cofrinho. Ter um objetivo claro ajuda a manter o foco na economia!"
             className="motive-text-area"
+            onChange={(e) => setMotive(e.target.value)}
           ></textarea>
 
           <div className="btn-container">
@@ -81,8 +96,16 @@ const Modal = ({ isOpen, setOpen }: IModal) => {
               content="Criar"
               className="createButton"
               onClick={() => {
-                createPiggyBank(setOpen, isOpen);
                 notifySucess();
+                setOpen(!isOpen);
+                addPiggyBankAction({
+                  userId: uuidv4(),
+                  name: name,
+                  initialDeposit: inialDeposit,
+                  targetAmount: targetAmount,
+                  motivation: motive,
+                  createdAt: new Date(),
+                });
               }}
             />
             <Button
@@ -159,7 +182,7 @@ const StyledModal = styled.div`
     /* for Firefox */
     -moz-appearance: none;
     /* for Chrome */
-    -webkit-appearance: none;
+    appearance: none;
   }
 
   select::-ms-expand {
@@ -216,12 +239,10 @@ const StyledModal = styled.div`
     }
   }
 
-  @media (max-width: 480px ) {
+  @media (max-width: 480px) {
     .modal {
       width: 100%;
     }
-
-    
   }
 `;
 
